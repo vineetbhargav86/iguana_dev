@@ -3,7 +3,7 @@
 var coinManagement = {};
 
 // Classes
-coinManagement.Coin = function(_id, _symbol, _description, _statusId) {
+coinManagement.Coin = function (_id, _symbol, _description, _statusId) {
 	this.Id = _id;
 	this.Symbol = _symbol;
 	this.Description = _description;
@@ -12,7 +12,7 @@ coinManagement.Coin = function(_id, _symbol, _description, _statusId) {
 	//coinManagement.log(Coin constructed');
 };
 
-coinManagement.CoinStatus = function(_id, _name) {
+coinManagement.CoinStatus = function (_id, _name) {
 	this.Id = _id;
 	this.Name = _name;
 };
@@ -34,7 +34,7 @@ coinManagement.CoinStatuses = [
 /// Coin Management JS API Methods
 /// ------------------------------
 
-coinManagement.log = function(message) {
+coinManagement.log = function (message) {
 	if (coinManagement.loggingEnabled == false) {
 		return;
 	}
@@ -42,7 +42,7 @@ coinManagement.log = function(message) {
 };
 
 // Inserts a new coin
-coinManagement.Post = function(objCoin) {
+coinManagement.Post = function (objCoin) {
 
 	// Check if JSON is valid
 	if (objCoin === null || objCoin === undefined) {
@@ -61,16 +61,15 @@ coinManagement.Post = function(objCoin) {
 	return true;
 };
 
-coinManagement.Get = function() {
+coinManagement.Get = function () {
 
 	// Clear Local Storage
 	//localStorage.removeItem('coinMgmt_savedCoins');
 
 	getCoinsFromLocalStorage();
 
-	
-	if(coinManagement.coins.length == 0)
-	{
+
+	if (coinManagement.coins.length == 0) {
 		// Test Data - call API here
 		coinManagement.coins = [
 			new coinManagement.Coin(1, 'USD', 'US Dollar', 1),
@@ -84,7 +83,7 @@ coinManagement.Get = function() {
 	}
 };
 
-coinManagement.GetById = function(id) {
+coinManagement.GetById = function (id) {
 	for (var index = 0; index < coinManagement.coins.length; index++) {
 		if (coinManagement.coins[index].Id == id) {
 			return coinManagement.coins[index];
@@ -92,7 +91,7 @@ coinManagement.GetById = function(id) {
 	}
 };
 
-coinManagement.GetCoinIndex = function(id) {
+coinManagement.GetCoinIndex = function (id) {
 	for (var index = 0; index < coinManagement.coins.length; index++) {
 		if (coinManagement.coins[index].Id == id) {
 			return index;
@@ -100,16 +99,16 @@ coinManagement.GetCoinIndex = function(id) {
 	}
 };
 
-coinManagement.RenderGrid = function() {
+coinManagement.RenderGrid = function () {
 	var coinsTableBody = document.getElementById('Coins_table').getElementsByTagName('tbody')[0];
 	coinsTableBody.innerHTML = '';
-	coinManagement.coins.forEach(function(element) {
+	coinManagement.coins.forEach(function (element) {
 		var htmlCoin = objToHtml(element);
 		coinsTableBody.innerHTML += htmlCoin;
 	});
 }
 
-coinManagement.Delete = function(id) {
+coinManagement.Delete = function (id) {
 
 	coinManagement.log('Deleting Coin ID : ' + id);
 	var index = coinManagement.GetCoinIndex(id);
@@ -126,7 +125,7 @@ coinManagement.Delete = function(id) {
 /// --------------
 /// Event Handlers
 /// --------------
-$('#Coins_refresh').click(function() {
+$('#Coins_refresh').click(function () {
 	loadData();
 });
 
@@ -135,7 +134,7 @@ $('#Coins_refresh').click(function() {
 // });
 
 
-$('#btnSaveCoinForm').click(function(event) {
+$('#btnSaveCoinForm').click(function (event) {
 
 	var saveButton = document.getElementById('btnSaveCoinForm');
 	saveButton.removeAttribute('data-dismiss');
@@ -162,7 +161,7 @@ $('#btnSaveCoinForm').click(function(event) {
 	saveButton.setAttribute('data-dismiss', 'modal');
 });
 
-$(function() {
+$(function () {
 	var select = document.getElementById('ddStatus');
 	for (var i = 0; i < coinManagement.CoinStatuses.length; i++) {
 		var option = document.createElement('option');
@@ -179,17 +178,17 @@ $(function() {
 /// Helper methods for Coin Management
 /// ----------------------------------
 
-var getCoinsFromLocalStorage = function() {
+var getCoinsFromLocalStorage = function () {
 
 	// reset in memory array
 	coinManagement.coins = [];
 
 	if (chrome != null && chrome != undefined && chrome.storage != null && chrome.storage != undefined) {
-		chrome.storage.sync.get('coinMgmt_savedCoins', function(localData) {
+		chrome.storage.sync.get('coinMgmt_savedCoins', function (localData) {
 			if (!chrome.runtime.error) {
 				coinManagement.log('getting data from chrome local storage');
 				coinManagement.log(localData);
-				coinManagement.coins = localData.coinMgmt_savedCoins;
+				coinManagement.coins = JSON.parse(localData.coinMgmt_savedCoins);
 			}
 		});
 	} else {
@@ -202,14 +201,13 @@ var getCoinsFromLocalStorage = function() {
 	}
 }
 
-var updateLocalStorage = function() {
+var updateLocalStorage = function () {
 	var temp = JSON.stringify(coinManagement.coins);
 	if (chrome.storage != null && chrome.storage != undefined) {
 		chrome.storage.sync.set({
 			'coinMgmt_savedCoins': temp
-		}, function() {
+		}, function () {
 			if (!chrome.runtime.error) {
-				alert('chrome local storage udated');
 				coinManagement.log('chrome local storage udated');
 			}
 		});
@@ -222,14 +220,14 @@ var updateLocalStorage = function() {
 };
 
 
-var objToHtml = function(objCoin) {
+var objToHtml = function (objCoin) {
 	if (objCoin == null || objCoin == undefined) {
 		return '';
 	}
 	return '<tr><td>' + objCoin.Symbol + '</td><td>' + objCoin.Description + '</td><td>' + GetStatusNameHtml(objCoin.StatusId) + '</td><td>' + getActionButton(objCoin.Id) + '</td></tr>';
 };
 
-var GetStatusNameHtml = function(id) {
+var GetStatusNameHtml = function (id) {
 	var result = GetStatusName(id);
 
 	switch (id) {
@@ -261,7 +259,7 @@ var GetStatusNameHtml = function(id) {
 
 };
 
-var GetStatusName = function(id) {
+var GetStatusName = function (id) {
 	for (var index = 0; index < coinManagement.CoinStatuses.length; index++) {
 		if (coinManagement.CoinStatuses[index].Id == id) {
 			return coinManagement.CoinStatuses[index].Name;
@@ -269,13 +267,13 @@ var GetStatusName = function(id) {
 	}
 };
 
-var getActionButton = function(id) {
+var getActionButton = function (id) {
 	// return '<button class="btn btn-default coinMgmtActionButton" data-id=' + id + ' onclick=\'alert(\"test\");\'>Button</button>';
 	return '<button class="btn btn-default coinMgmtActionButton" data-id=' + id + '>Delete</button>';
 };
 
 // This function loads and refreshes data in the UI grid
-var loadData = function() {
+var loadData = function () {
 	coinManagement.Get();
 	coinManagement.RenderGrid();
 
@@ -285,17 +283,17 @@ var loadData = function() {
 	}
 };
 
-var actionButtonClick = function(id) {
+var actionButtonClick = function (id) {
 	coinManagement.Delete(id);
 };
 
-var coinEditFormReset = function() {
+var coinEditFormReset = function () {
 	document.getElementById('txtSymbol').value = '';
 	document.getElementById('txtDescription').value = '';
 	document.getElementById('ddStatus').value = 1;
 }
 
-var coinEditFormIsValid = function() {
+var coinEditFormIsValid = function () {
 
 	var txt_symbol = document.getElementById('txtSymbol').value;
 	var txt_description = document.getElementById('txtDescription').value;
