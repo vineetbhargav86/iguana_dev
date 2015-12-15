@@ -113,10 +113,9 @@ coinManagement.Delete = function (id) {
 	coinManagement.log('Deleting Coin ID : ' + id);
 	var index = coinManagement.GetCoinIndex(id);
 	coinManagement.coins.splice(index, 1);
-
 	var temp = JSON.stringify(coinManagement.coins);
-	localStorage.setItem('coinMgmt_savedCoins', temp);
 
+	updateLocalStorage();
 	loadData();
 }
 
@@ -187,8 +186,8 @@ var getCoinsFromLocalStorage = function () {
 		chrome.storage.sync.get('coinMgmt_savedCoins', function (localData) {
 			if (!chrome.runtime.error) {
 				coinManagement.log('getting data from chrome local storage');
-				coinManagement.log(localData);
 				coinManagement.coins = JSON.parse(localData.coinMgmt_savedCoins);
+				coinManagement.log(coinManagement.coins);
 			}
 		});
 	} else {
@@ -208,7 +207,7 @@ var updateLocalStorage = function () {
 			'coinMgmt_savedCoins': temp
 		}, function () {
 			if (!chrome.runtime.error) {
-				coinManagement.log('chrome local storage udated');
+				coinManagement.log(' >>> chrome local storage udated');
 			}
 		});
 	} else {
@@ -279,12 +278,12 @@ var loadData = function () {
 
 	var e = document.getElementsByClassName('coinMgmtActionButton');
 	for (var index = 0; index < e.length; index++) {
-		e[index].setAttribute('onclick', 'actionButtonClick(' + e[index].getAttribute('data-id') + ');');
+		e[index].addEventListener('click', actionButtonClick);
 	}
 };
 
-var actionButtonClick = function (id) {
-	coinManagement.Delete(id);
+var actionButtonClick = function (event) {
+	coinManagement.Delete(event.target.attributes['data-id'].value);
 };
 
 var coinEditFormReset = function () {
