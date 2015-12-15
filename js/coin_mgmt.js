@@ -191,7 +191,7 @@ var getCoinsFromLocalStorage = function () {
 			}
 		});
 	} else {
-		coinManagement.log('#Err : getting from chrome local storage');
+		coinManagement.log('#Err : cannot read from chrome local storage');
 		coinManagement.log('getting data from localStorage');
 		if (localStorage.getItem('coinMgmt_savedCoins') != null && localStorage.getItem('coinMgmt_savedCoins') != undefined) {
 			coinManagement.coins = JSON.parse(localStorage.getItem('coinMgmt_savedCoins'));
@@ -202,7 +202,7 @@ var getCoinsFromLocalStorage = function () {
 
 var updateLocalStorage = function () {
 	var temp = JSON.stringify(coinManagement.coins);
-	if (chrome.storage != null && chrome.storage != undefined) {
+	 	if (chrome != null && chrome != undefined && chrome.storage != null && chrome.storage != undefined) {
 		chrome.storage.sync.set({
 			'coinMgmt_savedCoins': temp
 		}, function () {
@@ -211,7 +211,7 @@ var updateLocalStorage = function () {
 			}
 		});
 	} else {
-		coinManagement.log('#Err : updating chrome local storage');
+		coinManagement.log('#Err : cannot update chrome local storage');
 		coinManagement.log('saving data in localStorage');
 		localStorage.setItem('coinMgmt_savedCoins', temp);
 	}
