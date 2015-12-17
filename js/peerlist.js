@@ -1,7 +1,7 @@
 // placeholder of API peers response
-var response = {  
-   "peers":[  
-      {  
+var response = {
+   "peers":[
+      {
          "ipaddr":"127.0.0.1",
          "protover":60013,
          "relay":1,
@@ -9,7 +9,7 @@ var response = {
          "rank":0,
          "usock":4,
          "ready":1449777119,
-         "msgcounts":{  
+         "msgcounts":{
             "version":1,
             "verack":1,
             "getaddr":0,
@@ -33,7 +33,7 @@ var response = {
             "alert":0
          }
       },
-      {  
+      {
          "ipaddr":"234.0.0.1",
          "protover":50013,
          "relay":1,
@@ -41,7 +41,7 @@ var response = {
          "rank":1,
          "usock":4,
          "ready":1449777119,
-         "msgcounts":{  
+         "msgcounts":{
             "version":1,
             "verack":1,
             "getaddr":0,
@@ -65,7 +65,7 @@ var response = {
             "alert":0
          }
       },
-      {  
+      {
          "ipaddr":"345.0.0.1",
          "protover":62013,
          "relay":1,
@@ -73,7 +73,7 @@ var response = {
          "rank":1,
          "usock":4,
          "ready":1449777119,
-         "msgcounts":{  
+         "msgcounts":{
             "version":1,
             "verack":1,
             "getaddr":0,
@@ -97,7 +97,7 @@ var response = {
             "alert":0
          }
       },
-      {  
+      {
          "ipaddr":"567.0.0.1",
          "protover":30013,
          "relay":1,
@@ -105,7 +105,7 @@ var response = {
          "rank":0,
          "usock":4,
          "ready":1449777119,
-         "msgcounts":{  
+         "msgcounts":{
             "version":1,
             "verack":1,
             "getaddr":0,
@@ -129,7 +129,7 @@ var response = {
             "alert":0
          }
       },
-      {  
+      {
          "ipaddr":"321.0.0.1",
          "protover":55013,
          "relay":1,
@@ -137,7 +137,7 @@ var response = {
          "rank":2,
          "usock":4,
          "ready":1449777119,
-         "msgcounts":{  
+         "msgcounts":{
             "version":1,
             "verack":1,
             "getaddr":0,
@@ -161,7 +161,7 @@ var response = {
             "alert":0
          }
       },
-      {  
+      {
          "ipaddr":"764.0.0.1",
          "protover":60013,
          "relay":1,
@@ -169,7 +169,7 @@ var response = {
          "rank":2,
          "usock":4,
          "ready":3249777119,
-         "msgcounts":{  
+         "msgcounts":{
             "version":1,
             "verack":1,
             "getaddr":0,
@@ -193,7 +193,7 @@ var response = {
             "alert":0
          }
       },
-      {  
+      {
          "ipaddr":"327.0.0.1",
          "protover":60013,
          "relay":1,
@@ -201,7 +201,7 @@ var response = {
          "rank":3,
          "usock":4,
          "ready":1449777119,
-         "msgcounts":{  
+         "msgcounts":{
             "version":1,
             "verack":1,
             "getaddr":0,
@@ -225,7 +225,7 @@ var response = {
             "alert":0
          }
       },
-      {  
+      {
          "ipaddr":"765.0.0.1",
          "protover":60013,
          "relay":1,
@@ -233,7 +233,7 @@ var response = {
          "rank":0,
          "usock":4,
          "ready":1449777119,
-         "msgcounts":{  
+         "msgcounts":{
             "version":1,
             "verack":1,
             "getaddr":0,
@@ -257,7 +257,7 @@ var response = {
             "alert":0
          }
       },
-      {  
+      {
          "ipaddr":"255.0.0.1",
          "protover":60013,
          "relay":1,
@@ -265,7 +265,7 @@ var response = {
          "rank":2,
          "usock":4,
          "ready":1449777119,
-         "msgcounts":{  
+         "msgcounts":{
             "version":1,
             "verack":1,
             "getaddr":0,
@@ -356,14 +356,14 @@ var peerlist = (function(peerlist, $, undefined) {
 
 
 		// initializing favorite peers table
-		if ( localStorage['fav_peers'] ) {
-			fav_peers = JSON.parse( localStorage['fav_peers'] );
-			console.log('Loaded ' + fav_peers.length + ' favorite peers');
-		} else {
-			fav_peers = [];
-			console.log('No favorite peers found');
-		}
-		
+		// if ( localStorage['fav_peers'] ) {
+		// 	fav_peers = JSON.parse( localStorage['fav_peers'] );
+		// 	console.log('Loaded ' + fav_peers.length + ' favorite peers');
+		// } else {
+		 	fav_peers = [];
+		// 	console.log('No favorite peers found');
+		// }
+
 		var fav_peer_table = $('#fav_peerlist_tab').DataTable( {
 			"language": {
 				"emptyTable":"You have no favorite peers"
