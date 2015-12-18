@@ -119,12 +119,31 @@ coinManagement.getNewCoinId = function() {
 
 // Helper functions
 
-var readCache = function() {
-	// update coin array from cache
+// Genric Functions to read a key from local storage : for Chrome Browser and Chrome Extension App
+var readCache = function(key) {
+
+	// Check if this is a chrome extension App
+	if (chrome != null && chrome != undefined && chrome.storage != null && chrome.storage != undefined) {
+
+	}
+
+	// Else it should be a browser, which supports HTML 5 localStorage API
+	else {
+
+	}
 };
 
-var updateCache = function() {
-	// read coin array in cache
+// Genric Functions to add/update key value pair in lcoal storage : for Chrome Browser and Chrome Extension App
+var updateCache = function(key, value) {
+	// Check if this is a chrome extension App
+	if (chrome != null && chrome != undefined && chrome.storage != null && chrome.storage != undefined) {
+
+	}
+
+	// Else it should be a browser, which supports HTML 5 localStorage API
+	else {
+
+	}
 };
 
 var populateCoinStatusDropDown = function() {
