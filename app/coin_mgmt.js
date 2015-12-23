@@ -293,7 +293,7 @@ var deleteCoin = function (id) {
 //     $(".select ").dropdown({ "autoinit ": ".select " });
 // });
 
-window.onload = function () {
+var startCoinManagement = function () {
 
     coinManagement.Initialize();
 
