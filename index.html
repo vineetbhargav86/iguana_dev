@@ -10,12 +10,22 @@
     <link rel="stylesheet" type="text/css" href="css/ripples.css">
 
     <!-- Gogole Theme -->
-    <link rel="stylesheet" type="text/css" href="css/googleFonts.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/googleFonts.css">
     <link rel="stylesheet" type="text/css" href="css/googleIcons.css">
-    <link rel="stylesheet" type="text/css" href="css/googleTheme.css">
+    <link rel="stylesheet" type="text/css" href="css/googleTheme.css">-->
 
-    <!-- link style for tables -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+    <!-- Bootstrap Material Design -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.dropdown.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.6/css/bootstrap-material-design.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.6/css/ripples.css">
+
+
+
 </head>
 
 <body data-custom-load="true" data-name="iguana" data-tools="pnacl newlib glibc clang-newlib mac" data-configs="Debug Release"
@@ -225,7 +235,9 @@ data-path="{tc}/{config}">
             </div>
             <!--Coin Management Ends-->
             <!-- peers tab -->
-            <div id="Peers_page" class="page">
+
+
+            <div id="Peers_page2" class="page">
                 <div class="row" style="margin-bottom:15px;">
                     <div class="col-md-12 panel panel-default">
                         <div class="panel-heading">
@@ -286,6 +298,42 @@ data-path="{tc}/{config}">
                     </div>
                 </div>
             </div>
+
+
+            <div id="Peers_page" class="page">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>Peer management tab</h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <span class="checkbox pull-right" style="margin:25px 0px 25px 0px;">
+                            <label>
+                                <input type="checkbox"><span class="checkbox-material"><span class="check"></span></span>
+                            Favorites
+                            </label>
+                            </span>
+
+                            <table id="peersTable" class="table table-hover table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>IP Address</th>
+                                        <th>Coin Type</th>
+                                        <th>Height</th>
+                                        <th>Rank</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="peersTable_all"></tbody>
+                                <tbody id="peersTable_fav"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div id="Settings_page" class="page">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -335,19 +383,30 @@ data-path="{tc}/{config}">
         </div>
     </div>
 
+
     <!--jQuery-->
-    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
     <!--Bootstrap-->
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    
-    <!--dataTable.js-->
-    <script type="text/javascript" src='js/jquery.dataTables.min.js'></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+    <!--Material Design-->
+    <script type="text/javascript" src='https://cdn.jsdelivr.net/bootstrap.material-design/0.5.6/js/material.min.js'></script>
+    <script type="text/javascript" src='https://cdn.jsdelivr.net/bootstrap.material-design/0.5.6/js/ripples.min.js'></script>
+    <script type="text/javascript" src='js/jquery.dropdown.js'></script>
+
+    <!--jQuery-->
+    <!--<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>-->
+
+    <!--Bootstrap-->
+    <!--<script type="text/javascript" src="js/bootstrap.js"></script>-->
+
 
     <!--Google Theme-->
-    <script type="text/javascript" src='js/googleTheme.min.js'></script>
+    <!--<script type="text/javascript" src='js/googleTheme.min.js'></script>
     <script type="text/javascript" src='js/ripples.min.js'></script>
-    <script type="text/javascript" src='js/jquery.dropdown.js'></script>
+    <script type="text/javascript" src='js/jquery.dropdown.js'></script>-->
 
 
     <!--Iguana-->
