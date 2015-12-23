@@ -154,14 +154,16 @@ data-path="{tc}/{config}">
             <div id="Coins_page" class="page">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3>
-                            <span>Coin Management</span>
-                            <button id="Coins_reset" class="btn btn-default" title="Reset">Reset</button>
-                            <button id="Coins_refresh" class="btn btn-raised" data-ripple-color="#F0F0F0" title="Refresh">Refresh</button>
-                            <button id="Coins_add" class="btn btn-raised btn-primary" type="button" data-toggle="modal" data-target="#CoinEditModal" title="Add">Add</button>
-                        </h3>
+                        <h3>Coin Management</h3>
                     </div>
                     <div class="panel-body">
+                        
+                        <div class="pull-right">
+                            <button id="Coins_reset" class="btn btn-raised" title="Reset">Reset</button>
+                            <button id="Coins_refresh" class="btn btn-raised" data-ripple-color="#F0F0F0" title="Refresh">Refresh</button>
+                            <button id="Coins_add" class="btn btn-raised btn-primary" type="button" data-toggle="modal" data-target="#CoinEditModal" title="Add">Add</button>
+                        </div>
+                        
                         <table id="Coins_table" class="table table-hover table-condensed table-bordered ">
                             <thead>
                                 <tr>
@@ -289,17 +291,14 @@ data-path="{tc}/{config}">
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3>Peer management tab</h3>
+                            <h3>
+                                <span>Peer management tab</span>
+                            </h3>
                         </div>
                         <div class="panel-body">
-
-                            <span class="checkbox pull-right" style="margin:25px 0px 25px 0px;">
-                                <label>
-                                <input type="checkbox"><span class="checkbox-material"><span class="check"></span></span>
-                            Favorites
-                            </label>
-                            </span>
-
+                            <div class="pull-right">
+                                <span class="checkbox"><label><input type="checkbox"><span class="checkbox-material"><span class="check"></span></span> Favorites</label></span>
+                            </div>
                             <table id="peersTable" class="table table-hover table-bordered">
                                 <thead>
                                     <tr>
