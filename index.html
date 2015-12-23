@@ -10,38 +10,26 @@
     <link rel="stylesheet" type="text/css" href="css/ripples.css">
 
     <!-- Gogole Theme -->
-    <!--<link rel="stylesheet" type="text/css" href="css/googleFonts.css">
+    <link rel="stylesheet" type="text/css" href="css/googleFonts.css">
     <link rel="stylesheet" type="text/css" href="css/googleIcons.css">
-    <link rel="stylesheet" type="text/css" href="css/googleTheme.css">-->
-
-    <!-- Material Design fonts -->
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
-    <!-- Bootstrap Material Design -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.dropdown.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.6/css/bootstrap-material-design.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.material-design/0.5.6/css/ripples.css">
-
-
+    <link rel="stylesheet" type="text/css" href="css/googleTheme.css">
 
 </head>
 
 <body data-custom-load="true" data-name="iguana" data-tools="pnacl newlib glibc clang-newlib mac" data-configs="Debug Release"
 data-path="{tc}/{config}">
     <!-- <div class="jumbotron" style="height:100px;">
-							<h> Status: <code id="statusField">NO-STATUS</code></h>
-							<p>
-												<select id="pipe_name" hidden>
-																<option>urand</option>
-																<option>Pangea</option>
-																<option>MGW</option>
-												</select>
-												<input type="text" id="pipe_input_box" hidden>
-							</p>
-							<p><textarea id="pipe_output" hidden></textarea></p>
-		</div> -->
+        <h> Status: <code id="statusField">NO-STATUS</code></h>
+        <p>
+        <select id="pipe_name" hidden>
+                <option>urand</option>
+                <option>Pangea</option>
+                <option>MGW</option>
+        </select>
+        <input type="text" id="pipe_input_box" hidden>
+        </p>
+        <p><textarea id="pipe_output" hidden></textarea></p>
+    </div> -->
     <div class="iguana">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -113,9 +101,7 @@ data-path="{tc}/{config}">
                         <div class="panel-group">
                             <div class="panel panel-default api-call-All">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title api-panel-title">
-														Json posting form
-														</h4>
+                                    <h4 class="panel-title api-panel-title">Json posting form</h4>
                                 </div>
                                 <!-- panel-heading -->
                                 <div class="panel-body">
@@ -141,10 +127,9 @@ data-path="{tc}/{config}">
                                         </div>
                                     </div>
                                     <hr>
-
                                     <h3>
                                         <span>Submitted JSON history</span>
-										<button id="clearHistory" style='float: right' class='btn btn-default'>Clear history</button>
+                                        <button id="clearHistory" style='float: right' class='btn btn-default'>Clear history</button>
                                     </h3>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -309,7 +294,7 @@ data-path="{tc}/{config}">
                         <div class="panel-body">
 
                             <span class="checkbox pull-right" style="margin:25px 0px 25px 0px;">
-                            <label>
+                                <label>
                                 <input type="checkbox"><span class="checkbox-material"><span class="check"></span></span>
                             Favorites
                             </label>
@@ -348,19 +333,19 @@ data-path="{tc}/{config}">
                                 <div id="config_settings"></div>
                                 <div class="function" id="fread" hidden>
                                     <span>
-															<select class="file-handle" id="freadHandle"></select>
-															Count:
-															<input type="text" id="freadBytes">
-															<button>fread</button>
-														</span>
+                                        <select class="file-handle" id="freadHandle"></select>
+                                        Count:
+                                        <input type="text" id="freadBytes">
+                                        <button>fread</button>
+                                    </span>
                                 </div>
                                 <div class="function" id="fwrite" hidden>
                                     <span>
-														<select class="file-handle" id="fwriteHandle"></select>
-														Data:
-														<input type="text" id="fwriteData">
-														<button>fwrite</button>
-													</span>
+                                        <select class="file-handle" id="fwriteHandle"></select>
+                                        Data:
+                                        <input type="text" id="fwriteData">
+                                        <button>fwrite</button>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -383,30 +368,17 @@ data-path="{tc}/{config}">
         </div>
     </div>
 
-
     <!--jQuery-->
-    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 
     <!--Bootstrap-->
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-
-    <!--Material Design-->
-    <script type="text/javascript" src='https://cdn.jsdelivr.net/bootstrap.material-design/0.5.6/js/material.min.js'></script>
-    <script type="text/javascript" src='https://cdn.jsdelivr.net/bootstrap.material-design/0.5.6/js/ripples.min.js'></script>
-    <script type="text/javascript" src='js/jquery.dropdown.js'></script>
-
-    <!--jQuery-->
-    <!--<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>-->
-
-    <!--Bootstrap-->
-    <!--<script type="text/javascript" src="js/bootstrap.js"></script>-->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
 
 
     <!--Google Theme-->
-    <!--<script type="text/javascript" src='js/googleTheme.min.js'></script>
+    <script type="text/javascript" src='js/googleTheme.min.js'></script>
     <script type="text/javascript" src='js/ripples.min.js'></script>
-    <script type="text/javascript" src='js/jquery.dropdown.js'></script>-->
+    <script type="text/javascript" src='js/jquery.dropdown.js'></script>
 
 
     <!--Iguana-->
@@ -417,8 +389,8 @@ data-path="{tc}/{config}">
     <script type="text/javascript" src="example.js"></script>
     <script type="text/javascript" src='js/peerlist.js'></script>
     <script type="text/javascript" src="js/api.js" " charset="utf-8 "></script>
-    <script type="text/javascript " src="js/methods.js "  charset="utf-8 "></script>
-    <script type="text/javascript " src="js/sites.js "  charset="utf-8 "></script>
-    <script type="text/javascript " src="js/settings.js "  charset="utf-8 "></script>
+<script type="text/javascript " src="js/methods.js "  charset="utf-8 "></script>
+<script type="text/javascript " src="js/sites.js "  charset="utf-8 "></script>
+<script type="text/javascript " src="js/settings.js "  charset="utf-8 "></script>
 </body>
 </html>
