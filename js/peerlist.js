@@ -386,15 +386,4 @@ document.getElementById('cbShowFavoritePeers').onclick = function () {
 var startPeerManagement = function () {
     renderPeersGrid();
 
-    document.body.onclick = function (e) {
-        e = window.event ? event.srcElement : e.target;
-
-        if (e.className && e.className.indexOf('addPeerToFav') != -1) {
-            addPeerToFav(e.getAttribute('data-id'));
-        }
-        else if (e.className && e.className.indexOf('removePeerFromFav') != -1) {
-            removePeerFromFav(e.getAttribute('data-id'));
-        }
-    };
-
 };

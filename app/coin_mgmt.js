@@ -229,7 +229,7 @@ var GetStatusNameHtml = function (id) {
 };
 
 var getActionButton = function (id) {
-    return '<button class="btn btn-raised btn-danger coinMgmtActionButton" data-id=' + id + '>Delete</button>';
+    return '<button class="btn btn-raised btn-danger btn-xs coinMgmtActionButton" data-id=' + id + '>Delete</button>';
 };
 
 var objToHtml = function (objCoin) {
@@ -293,14 +293,6 @@ var startCoinManagement = function () {
     document.getElementById('Coins_refresh').onclick = renderGrid;
     document.getElementById('Coins_reset').addEventListener('click', coinManagement.Initialize);
     document.getElementById('Coins_reset').addEventListener('click', renderGrid);
-
-    // $('.coinMgmtActionButton').click equivelant w/o jQuery
-    document.body.onclick = function (e) {
-        e = window.event ? event.srcElement : e.target;
-        if (e.className && e.className.indexOf('coinMgmtActionButton') != -1) {
-            deleteCoin(e.getAttribute('data-id'));
-        }
-    };
 
     renderGrid();
     populateCoinStatusDropDown();
