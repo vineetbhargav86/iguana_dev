@@ -261,6 +261,7 @@ var addCoin = function (e) {
 
     console.log('# coin added');
     renderGrid();
+    coinEditFormReset();
 };
 
 var renderGrid = function () {
@@ -282,7 +283,11 @@ var deleteCoin = function (id) {
     renderGrid();
 };
 
-
+var coinEditFormReset = function () {
+    document.getElementById('txtSymbol').value = '';
+    document.getElementById('txtDescription').value = '';
+    document.getElementById('ddStatus').value = 1;
+}
 // Event Handlers
 
 var startCoinManagement = function () {
@@ -290,6 +295,7 @@ var startCoinManagement = function () {
     coinManagement.Initialize();
 
     document.getElementById('btnSaveCoinForm').onclick = addCoin;
+    document.getElementById('btnClearCoinForm').onclick = coinEditFormReset;
     document.getElementById('Coins_refresh').onclick = renderGrid;
     document.getElementById('Coins_reset').addEventListener('click', coinManagement.Initialize);
     document.getElementById('Coins_reset').addEventListener('click', renderGrid);
