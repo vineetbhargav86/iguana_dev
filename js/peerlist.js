@@ -309,10 +309,12 @@ var getHtmlRow = function (id, peer) {
     row += '<td>' + peer.height + '</td>';
     row += '<td>' + peer.rank + '</td>';
     if ($.inArray(id, favPeers) == -1) {
-        row += '<td><button class="btn btn-xs btn-success btn-raised" onclick="addPeerToFav(' + id.toString() + ');"> + Favorite</button></td>';
+        row += '<td><button class="btn btn-xs btn-success btn-raised addPeerToFav" data-id="' + id.toString() + '"> + Favorite</button></td>';
+        // row += '<td><i class="material-icons addPeerToFav" data-id="' + id.toString() + '">bookmark_border</i></td>';
     }
     else {
-        row += '<td><button class="btn btn-xs btn-danger btn-raised" onclick="removePeerFromFav(' + id.toString() + ');"> - Unfavorite</button></td>';
+        row += '<td><button class="btn btn-xs btn-danger btn-raised removePeerFromFav" data-id="' + id.toString() + '"> - Unfavorite</button></td>';
+        // row += '<td><i class="material-icons removePeerFromFav" data-id="' + id.toString() + '">bookmark</i></td>'
     }
 
     row += '</tr>';
@@ -321,8 +323,8 @@ var getHtmlRow = function (id, peer) {
 
 var addPeerToFav = function (id) {
     if ($.inArray(id, favPeers) == -1) {
-        favPeers.push(id);
-        console.log('peer faved', favPeers);
+        favPeers.push(parseInt(id));
+        console.log('@ peer faved', favPeers);
     }
     
     // refresh grid
@@ -333,7 +335,7 @@ var removePeerFromFav = function (id) {
     for (var index = 0; index < favPeers.length; index++) {
         if (id == favPeers[index]) {
             favPeers.splice(index, 1);
-            console.log('peer unfaved', favPeers);
+            console.log('@ peer unfaved', favPeers);
             break;
         }
     }
@@ -343,6 +345,8 @@ var removePeerFromFav = function (id) {
 };
 
 var renderPeersGrid = function (favoritesOnly = false) {
+
+    console.log('@ peer print grid')
 
     var peersTableAllHtml = '';
 
@@ -381,4 +385,16 @@ document.getElementById('cbShowFavoritePeers').onclick = function () {
 
 var startPeerManagement = function () {
     renderPeersGrid();
+
+    document.body.onclick = function (e) {
+        e = window.event ? event.srcElement : e.target;
+
+        if (e.className && e.className.indexOf('addPeerToFav') != -1) {
+            addPeerToFav(e.getAttribute('data-id'));
+        }
+        else if (e.className && e.className.indexOf('removePeerFromFav') != -1) {
+            removePeerFromFav(e.getAttribute('data-id'));
+        }
+    };
+
 };
