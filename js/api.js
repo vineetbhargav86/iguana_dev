@@ -11,7 +11,7 @@ function tagGen(len)
 var SPNAPI = (function(SPNAPI, $, undefined) {
 
     SPNAPI.methods = {};
-    SPNAPI.pages = ["Settings", "eyedea", "Peers","Debug", "Coins"];
+    SPNAPI.pages = ["Settings", "eyedea", "Peers","Debug", "Coins", "Blockexplorer"];
     SPNAPI.pageContent = {};
     SPNAPI.page = "welcome";
     $(document).ready(function() {
@@ -36,7 +36,6 @@ var SPNAPI = (function(SPNAPI, $, undefined) {
         $(".clear-response").on("click", function () {
             $(".hljs").html("JSON response");
         });
-
         
     });
 
