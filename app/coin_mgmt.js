@@ -285,14 +285,6 @@ var deleteCoin = function (id) {
 
 // Event Handlers
 
-// $(function () {
-//     $.material.init(); 
-                    
-//     // Init any existing .select element and then watch for new .select elements
-//     // added dinamically by some black magic casted by a evil wizard
-//     $(".select ").dropdown({ "autoinit ": ".select " });
-// });
-
 var startCoinManagement = function () {
 
     coinManagement.Initialize();
@@ -309,7 +301,6 @@ var startCoinManagement = function () {
             deleteCoin(e.getAttribute('data-id'));
         }
     };
-
 
     renderGrid();
     populateCoinStatusDropDown();

@@ -1,4 +1,8 @@
 // placeholder of API peers response
+
+var coin_types = ['BTC', 'BTCD'];
+
+
 var response = {
     "peers": [
         {
@@ -295,118 +299,86 @@ var response = {
     "tag": "12697016274367621769"
 };
 
+var favPeers = [];
 
-var peerlist = (function (peerlist, $, undefined) {
+var getHtmlRow = function (id, peer) {
+    var row = '';
+    row = '<tr data-id="' + id.toString() + '">';
+    row += '<td>' + peer.ipaddr + '</td>';
+    row += '<td>' + peer.cointype + '</td>';
+    row += '<td>' + peer.height + '</td>';
+    row += '<td>' + peer.rank + '</td>';
+    if ($.inArray(id, favPeers) == -1) {
+        row += '<td><button class="btn btn-xs btn-success btn-raised" onclick="addPeerToFav(' + id.toString() + ');"> + Favorite</button></td>';
+    }
+    else {
+        row += '<td><button class="btn btn-xs btn-danger btn-raised" onclick="removePeerFromFav(' + id.toString() + ');"> - Unfavorite</button></td>';
+    }
 
-    var coin_types = ['BTC', 'BTCD'];
-    var addRow2 = function (table, object, fav) {
-        table.row.add([
-            function () {
-                if (object.name) {
-                    return object.name;
-                } else {
-                    return '';
-                }
-            },
-            object.ipaddr,
-            object.cointype,
-            object.height,
-            object.rank,
-            function () {
-                if (!fav) {
-                    var to_return = '<button class="btn btn-default btn-disconnect">Disconnect</button>';
-                    to_return += '<button class="btn btn-success btn-fave pull-right">Add Favorite</button>';
-                } else if (fav) {
-                    var to_return = '<button class="btn btn-default btn-connect">Connect</button>';
-                    to_return += '<button class="btn btn-warning btn-unfave pull-right">Remove Favorite</button>';
-                }
-                to_return += '<span hidden class="obj-keeper">' + JSON.stringify(object) + '</span>';
-                return to_return;
-            }
-        ]).draw(false);
-    };
+    row += '</tr>';
+    return row;
+};
 
-    var getHtmlRow = function (peer) {
-        var row = '';
-        row = '<tr>';
-        row += '<td>' + peer.ipaddr + '</td>';
-        row += '<td>' + peer.cointype + '</td>';
-        row += '<td>' + peer.height + '</td>';
-        row += '<td>' + peer.rank + '</td>';
-        row += '<td>action !</td>';
-        row += '</tr>';
-        return row;
-    };
+var addPeerToFav = function (id) {
+    if ($.inArray(id, favPeers) == -1) {
+        favPeers.push(id);
+        console.log('peer faved', favPeers);
+    }
+    
+    // refresh grid
+    renderPeersGrid(false);
+};
 
-    $(document).ready(function () {
-        
-        // printing peers table
-        
-        var peersTableAllHtml = '';
-        
-        for (var i = 0; i < response.peers.length; i++) {
-            response.peers[i].cointype = response.coin
-            peersTableAllHtml += getHtmlRow(response.peers[i]);
+var removePeerFromFav = function (id) {
+    for (var index = 0; index < favPeers.length; index++) {
+        if (id == favPeers[index]) {
+            favPeers.splice(index, 1);
+            console.log('peer unfaved', favPeers);
+            break;
         }
+    }
+    
+    // refresh grid
+    renderPeersGrid(document.getElementById('cbShowFavoritePeers').checked);
+};
+
+var renderPeersGrid = function (favoritesOnly = false) {
+
+    var peersTableAllHtml = '';
+
+    for (var i = 0; i < response.peers.length; i++) {
+
+        if (favoritesOnly == true && $.inArray(i, favPeers) == -1) {
+            continue;
+        }
+
+        response.peers[i].cointype = response.coin
+        peersTableAllHtml += getHtmlRow(i, response.peers[i]);
+    }
+    document.getElementById('peersTable_all').innerHTML = peersTableAllHtml;
+};
+
+document.getElementById('cbShowFavoritePeers').onclick = function () {
+    // if (document.getElementById('cbShowFavoritePeers').checked == true) {
         
-        document.getElementById('peersTable_all').innerHTML = peersTableAllHtml;
+    //     // document.getElementById('peersTable_all').style.display = 'none';
+    //     // document.getElementById('peersTable_fav').style.display = 'block';
+        
+    //     $('#peersTable_all').hide();
+    //     $('#peersTable_fav').show();
+    // }
+    // else {
 
-       
-        // initializing favorite peers table
-        // if ( localStorage['fav_peers'] ) {
-        // 	fav_peers = JSON.parse( localStorage['fav_peers'] );
-        // 	console.log('Loaded ' + fav_peers.length + ' favorite peers');
-        // } else {
-        fav_peers = [];
-        // 	console.log('No favorite peers found');
-        // }
+    //     // document.getElementById('peersTable_all').style.display = 'block';
+    //     // document.getElementById('peersTable_fav').style.display = 'none';
+        
+    //     $('#peersTable_all').show();
+    //     $('#peersTable_fav').hide();
+    // }
+    
+    renderPeersGrid(document.getElementById('cbShowFavoritePeers').checked);
+};
 
-        // var fav_peer_table = $('#fav_peerlist_tab').DataTable( {
-        // 	"language": {
-        // 		"emptyTable":"You have no favorite peers"
-        // 	},
-        // 	"lengthChange":false,
-        // 	"pageLength":25,
-        // 	"autoWidth":false,
-        // 	"columns": [
-        // 		{ },
-        // 		{ },
-        // 		{ },
-        // 		{ },
-        // 		{ },
-        // 		{
-        // 			"orderable":false,
-        // 			"width":"23%"
-        // 		}
-        // 	]
-        // });
-        // for ( i=0; i<fav_peers.length; i++ ) {
-        // 	addRow( fav_peer_table, fav_peers[i], fav = true );
-        // }
-        // handling "add favorite" button
-        $(document).on('click', '.btn-fave', function (event) {
-            // getting raw object
-            var data = $(event.target).parents('tr').find('.obj-keeper').text();
-            var object = JSON.parse(data);
-            // adding it favorite peers array
-            fav_peers.push(object);
-            addRow(fav_peer_table, object, fav = true);
-            // storing array in local storage
-            localStorage['fav_peers'] = JSON.stringify(fav_peers);
-        });
-        // handling "remove from favorite" button
-        // working on it
-		/*
-		$(document).on('click', '.btn-unfave', function(event) {
-			// getting raw object
-			var data = $(event.target).parents('tr').find('.obj-keeper').text();
-			var object = JSON.parse(data);
-			for (i=0; i<fav_peers.length; i++ ) {
-
-			}
-			$(event.target).parents('tr').revome();
-		});
-		*/
-    });
-    return peerlist;
-} (peerlist || {}, jQuery));
+var startPeerManagement = function () {
+    renderPeersGrid();
+};

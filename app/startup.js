@@ -4,4 +4,5 @@ $(function () {
     $.material.init();
     
     startCoinManagement();
+    startPeerManagement();
 });
