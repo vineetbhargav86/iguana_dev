@@ -355,24 +355,24 @@ var renderPeersGrid = function (favoritesOnly = false) {
         response.peers[i].cointype = response.coin
         peersTableAllHtml += getHtmlRow(i, response.peers[i]);
     }
-    document.getElementById('peersTable_all').innerHTML = peersTableAllHtml;
+    document.getElementById('peersTableBody').innerHTML = peersTableAllHtml;
 };
 
 document.getElementById('cbShowFavoritePeers').onclick = function () {
     // if (document.getElementById('cbShowFavoritePeers').checked == true) {
         
-    //     // document.getElementById('peersTable_all').style.display = 'none';
+    //     // document.getElementById('peersTableBody').style.display = 'none';
     //     // document.getElementById('peersTable_fav').style.display = 'block';
         
-    //     $('#peersTable_all').hide();
+    //     $('#peersTableBody').hide();
     //     $('#peersTable_fav').show();
     // }
     // else {
 
-    //     // document.getElementById('peersTable_all').style.display = 'block';
+    //     // document.getElementById('peersTableBody').style.display = 'block';
     //     // document.getElementById('peersTable_fav').style.display = 'none';
         
-    //     $('#peersTable_all').show();
+    //     $('#peersTableBody').show();
     //     $('#peersTable_fav').hide();
     // }
     
