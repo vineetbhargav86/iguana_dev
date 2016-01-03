@@ -9,6 +9,4 @@ WIKI: https://phabricator.supernet.org/w/iguana/
 
 no forking & pull requests, please. Please refer :
 
-https://slack-files.com/T02LAJBUW-F0GS43ZCH-cd5662701f
-
-https://slack-files.com/T02LAJBUW-F0GT14PM2-311152d6ea
+https://phabricator.supernet.org/w/iguana/development/getting_started/
